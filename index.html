@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>디자인 스튜디오 — 로고 · 상세페이지 · 패키지</title>
+<meta name="description" content="로고·브랜딩, 상세페이지·SNS, 인쇄물·패키지 디자인. 작업물을 보고 편하게 무료 상담을 신청하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0d0c;
+    --bg-2: #161412;
+    --line: #2a2622;
+    --text: #ece6dc;
+    --muted: #9c948a;
+    --gold: #c8a46a;
+    --gold-soft: rgba(200, 164, 106, .12);
+    --serif: "Noto Serif KR", serif;
+    --sans: "Noto Sans KR", system-ui, sans-serif;
+    --latin: "Cormorant Garamond", serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-weight: 300; font-size: 16px; line-height: 1.75;
+    -webkit-font-smoothing: antialiased; word-break: keep-all;
+  }
+  a { color: inherit; }
+  .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+  /* 상단 */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(14, 13, 12, .82); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: var(--latin); font-size: 22px; letter-spacing: .14em; text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14px; }
+  .nav-links a { text-decoration: none; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 720px) { .nav-links a:not(.btn) { display: none; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 28px; min-height: 48px; border: 1px solid var(--gold);
+    background: var(--gold); color: #17130d !important; font: 500 15px var(--sans);
+    letter-spacing: .04em; text-decoration: none; cursor: pointer; transition: .25s;
+  }
+  .btn:hover { background: transparent; color: var(--gold) !important; }
+  .btn.small { padding: 8px 18px; min-height: 40px; font-size: 13px; }
+  .btn.ghost { background: transparent; color: var(--text) !important; border-color: var(--line); }
+  .btn.ghost:hover { border-color: var(--gold); color: var(--gold) !important; }
+
+  /* 첫 화면 */
+  .hero { padding: clamp(80px, 14vw, 160px) 0 clamp(72px, 10vw, 120px); position: relative; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; right: -10%; top: -20%; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px;
+    background: radial-gradient(circle, rgba(200,164,106,.10), transparent 65%); pointer-events: none;
+  }
+  .eyebrow { font-family: var(--latin); font-style: italic; color: var(--gold); font-size: 20px; letter-spacing: .06em; margin: 0 0 20px; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 5.6vw, 64px);
+    line-height: 1.32; letter-spacing: -.01em; margin: 0 0 28px; max-width: 16em;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p.lead { color: var(--muted); font-size: clamp(16px, 1.8vw, 18px); max-width: 34em; margin: 0 0 44px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .for-whom { margin-top: 64px; display: flex; flex-wrap: wrap; gap: 10px 28px; color: var(--muted); font-size: 14px; }
+  .for-whom span::before { content: "— "; color: var(--gold); }
+
+  /* 공통 섹션 */
+  section { padding: clamp(72px, 10vw, 120px) 0; border-top: 1px solid var(--line); }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 20px; margin-bottom: 48px; }
+  .sec-head .num { font-family: var(--latin); color: var(--gold); font-size: 18px; letter-spacing: .1em; }
+  .sec-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3.4vw, 38px); margin: 6px 0 0; line-height: 1.4; }
+  .sec-head p { color: var(--muted); margin: 0; max-width: 28em; }
+
+  /* 서비스 */
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
+  .service { padding: 40px 32px; border-right: 1px solid var(--line); }
+  .service:last-child { border-right: 0; }
+  .service .en { font-family: var(--latin); font-style: italic; color: var(--gold); font-size: 18px; }
+  .service h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; margin: 8px 0 14px; }
+  .service p { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
+  .service ul { list-style: none; padding: 0; margin: 0; font-size: 14px; }
+  .service li { padding: 6px 0; border-top: 1px solid var(--line); }
+  @media (max-width: 860px) {
+    .services { grid-template-columns: 1fr; }
+    .service { border-right: 0; border-bottom: 1px solid var(--line); }
+    .service:last-child { border-bottom: 0; }
+  }
+
+  /* 포트폴리오 */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .filters button {
+    background: transparent; border: 1px solid var(--line); color: var(--muted);
+    padding: 8px 18px; min-height: 40px; font: 400 14px var(--sans); cursor: pointer; transition: .2s;
+  }
+  .filters button[aria-pressed="true"], .filters button:hover { border-color: var(--gold); color: var(--gold); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+  .work { margin: 0; }
+  .work .frame {
+    aspect-ratio: 4 / 5; background: var(--bg-2); border: 1px solid var(--line); overflow: hidden;
+    display: grid; place-items: center; position: relative;
+  }
+  .work img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s; }
+  .work:hover img { transform: scale(1.03); }
+  .work .placeholder { text-align: center; color: #5d5750; font-size: 13px; padding: 20px; }
+  .work .placeholder b { display: block; font-family: var(--latin); font-style: italic; font-weight: 400; font-size: 28px; color: #3d3833; margin-bottom: 6px; }
+  .work figcaption { display: flex; justify-content: space-between; padding: 14px 2px 0; font-size: 14px; }
+  .work figcaption span { color: var(--muted); }
+
+  /* 진행 과정 */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: s; }
+  .step { padding: 0 24px 0 0; position: relative; }
+  .step::before {
+    counter-increment: s; content: "0" counter(s);
+    display: block; font-family: var(--latin); font-size: 44px; color: var(--gold); line-height: 1; margin-bottom: 18px;
+  }
+  .step h3 { font-family: var(--serif); font-weight: 400; font-size: 20px; margin: 0 0 8px; }
+  .step p { color: var(--muted); font-size: 15px; margin: 0; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; gap: 40px 0; } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+  /* 자주 묻는 질문 */
+  .faq { border-top: 1px solid var(--line); }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq summary {
+    list-style: none; cursor: pointer; padding: 24px 40px 24px 0; position: relative;
+    font-family: var(--serif); font-size: 18px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 20px; font-size: 24px; color: var(--gold); font-family: var(--sans); font-weight: 300; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { margin: 0 0 24px; color: var(--muted); max-width: 40em; }
+
+  /* 후기 */
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .reviews { grid-template-columns: 1fr; } }
+  .review { border: 1px solid var(--line); padding: 32px; background: var(--bg-2); }
+  .review .q { font-family: var(--latin); font-size: 48px; color: var(--gold); line-height: .6; display: block; margin-bottom: 14px; }
+  .review p { margin: 0 0 20px; }
+  .review cite { font-style: normal; color: var(--muted); font-size: 14px; }
+  .review.empty p { color: #5d5750; }
+
+  /* 상담 신청 */
+  .contact { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 6vw, 96px); }
+  @media (max-width: 860px) { .contact { grid-template-columns: 1fr; } }
+  .contact h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.4; margin: 6px 0 20px; }
+  .contact .side p { color: var(--muted); }
+  form { display: grid; gap: 22px; }
+  label.field { display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+  input[type=text], input[type=tel] {
+    width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    color: var(--text); font: 400 17px var(--sans); padding: 10px 0; outline: none; border-radius: 0;
+  }
+  input[type=text]:focus, input[type=tel]:focus { border-bottom-color: var(--gold); }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  legend { font-size: 14px; color: var(--muted); margin-bottom: 10px; padding: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips label { cursor: pointer; }
+  .chips input { position: absolute; opacity: 0; pointer-events: none; }
+  .chips span {
+    display: inline-block; border: 1px solid var(--line); padding: 9px 16px; font-size: 14px; color: var(--muted); transition: .2s;
+  }
+  .chips input:checked + span { border-color: var(--gold); color: var(--gold); background: var(--gold-soft); }
+  .chips input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .consent { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--muted); cursor: pointer; }
+  .consent input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--gold); flex: none; }
+  .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .msg { min-height: 1.5em; margin: 0; font-size: 15px; }
+  .msg.ok { color: var(--gold); }
+  .msg.err { color: #e08a7a; }
+  form .btn { width: 100%; }
+  form .btn[disabled] { opacity: .5; cursor: wait; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--muted); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* 폰에서 늘 보이는 상담 버튼 */
+  .float-cta { display: none; }
+  @media (max-width: 720px) {
+    .float-cta {
+      display: flex; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 20;
+      box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    }
+    footer { padding-bottom: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">STUDIO</a>
+    <nav class="nav-links">
+      <a href="#services">서비스</a>
+      <a href="#works">포트폴리오</a>
+      <a href="#process">진행 과정</a>
+      <a href="#faq">자주 묻는 질문</a>
+      <a class="btn small" href="#contact">무료 상담 신청</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. 첫 화면 -->
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Brand · Detail Page · Package</p>
+      <h1>가게와 브랜드의 첫인상,<br><em>로고부터 상세페이지까지</em> 함께 만듭니다.</h1>
+      <p class="lead">로고·브랜딩, 상세페이지·SNS, 인쇄물·패키지 디자인. 작업물을 먼저 보시고, 마음에 들면 편하게 무료 상담을 신청하세요.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#contact">무료 상담 신청 →</a>
+        <a class="btn ghost" href="#works">작업물 보기</a>
+      </div>
+      <div class="for-whom">
+        <span>가게 사장님</span>
+        <span>온라인 쇼핑몰 운영자</span>
+        <span>1인 사업자 · 프리랜서</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 이런 디자인을 해요 -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">01 — Services</div><h2>이런 디자인을 해요</h2></div>
+        <p>필요한 것 하나만 맡기셔도, 처음부터 한 번에 맡기셔도 괜찮아요.</p>
+      </div>
+      <div class="services">
+        <div class="service">
+          <div class="en">Branding</div>
+          <h3>로고 · 브랜딩</h3>
+          <p>가게와 브랜드를 한눈에 알아보게 하는 얼굴을 만듭니다.</p>
+          <ul><li>로고</li><li>명함</li><li>브랜드 색 · 글꼴 정리</li></ul>
+        </div>
+        <div class="service">
+          <div class="en">Detail &amp; SNS</div>
+          <h3>상세페이지 · SNS</h3>
+          <p>보는 사람이 끝까지 읽고 사고 싶어지게 구성합니다.</p>
+          <ul><li>쇼핑몰 상세페이지</li><li>인스타그램 카드뉴스</li><li>배너</li></ul>
+        </div>
+        <div class="service">
+          <div class="en">Print &amp; Package</div>
+          <h3>인쇄물 · 패키지</h3>
+          <p>손에 쥐었을 때 기억에 남는 인쇄물과 포장을 만듭니다.</p>
+          <ul><li>전단지 · 포스터</li><li>책자</li><li>포장 디자인</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 포트폴리오 -->
+  <section id="works">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">02 — Works</div><h2>포트폴리오</h2></div>
+        <p>분야를 눌러 작업물을 나눠 보세요.</p>
+      </div>
+      <div class="filters" role="group" aria-label="분야 고르기">
+        <button type="button" data-filter="all" aria-pressed="true">전체</button>
+        <button type="button" data-filter="brand" aria-pressed="false">로고 · 브랜딩</button>
+        <button type="button" data-filter="detail" aria-pressed="false">상세페이지 · SNS</button>
+        <button type="button" data-filter="print" aria-pressed="false">인쇄물 · 패키지</button>
+      </div>
+      <!--
+        작업물 넣는 법: images 폴더에 사진을 넣고, 아래 .placeholder 부분을
+        <img src="images/파일이름.jpg" alt="작업 설명" loading="lazy"> 로 바꾸세요.
+      -->
+      <div class="grid">
+        <figure class="work" data-cat="brand">
+          <div class="frame"><div class="placeholder"><b>Branding</b>작업물 이미지 준비 중</div></div>
+          <figcaption>로고 · 브랜딩<span>준비 중</span></figcaption>
+        </figure>
+        <figure class="work" data-cat="detail">
+          <div class="frame"><div class="placeholder"><b>Detail Page</b>작업물 이미지 준비 중</div></div>
+          <figcaption>상세페이지<span>준비 중</span></figcaption>
+        </figure>
+        <figure class="work" data-cat="print">
+          <div class="frame"><div class="placeholder"><b>Package</b>작업물 이미지 준비 중</div></div>
+          <figcaption>패키지<span>준비 중</span></figcaption>
+        </figure>
+        <figure class="work" data-cat="detail">
+          <div class="frame"><div class="placeholder"><b>SNS</b>작업물 이미지 준비 중</div></div>
+          <figcaption>SNS 카드뉴스<span>준비 중</span></figcaption>
+        </figure>
+        <figure class="work" data-cat="print">
+          <div class="frame"><div class="placeholder"><b>Print</b>작업물 이미지 준비 중</div></div>
+          <figcaption>전단지 · 포스터<span>준비 중</span></figcaption>
+        </figure>
+        <figure class="work" data-cat="brand">
+          <div class="frame"><div class="placeholder"><b>Identity</b>작업물 이미지 준비 중</div></div>
+          <figcaption>명함 · 브랜드 정리<span>준비 중</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 진행 과정 -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">03 — Process</div><h2>이렇게 진행돼요</h2></div>
+        <p>처음 맡기셔도 어렵지 않게, 단계마다 함께 확인합니다.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>무료 상담</h3><p>필요한 디자인과 가게·브랜드 이야기를 들려주세요.</p></div>
+        <div class="step"><h3>시안</h3><p>상담 내용을 바탕으로 디자인 시안을 보여 드려요.</p></div>
+        <div class="step"><h3>수정</h3><p>보시고 고치고 싶은 부분을 함께 다듬어요.</p></div>
+        <div class="step"><h3>완성</h3><p>바로 쓸 수 있는 파일로 전달해 드려요.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 자주 묻는 질문 (가격·기간·수정 횟수는 확정되면 바꿔 넣기) -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">04 — FAQ</div><h2>자주 묻는 질문</h2></div>
+      </div>
+      <div class="faq">
+        <details><summary>가격은 얼마인가요?</summary><p>디자인 종류와 작업 양에 따라 달라요. 무료 상담에서 필요한 것을 듣고 견적을 안내해 드려요.</p></details>
+        <details><summary>작업 기간은 얼마나 걸리나요?</summary><p>디자인 종류와 일정에 따라 달라요. 상담할 때 원하시는 날짜를 알려 주시면 맞춰서 안내해 드려요.</p></details>
+        <details><summary>수정은 몇 번까지 되나요?</summary><p>수정 횟수는 상담할 때 작업 범위와 함께 정확히 안내해 드려요.</p></details>
+        <details><summary>디자인을 처음 맡겨 보는데 괜찮을까요?</summary><p>괜찮아요. 아직 정해진 게 없어도 상담에서 함께 정리해 드려요.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 고객 후기 (실제 후기 원문만 넣기) -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="num">05 — Reviews</div><h2>고객 후기</h2></div>
+      </div>
+      <!-- 후기 넣는 법: 아래 .review.empty 를 복사해서 실제 후기 원문과 손님(예: 카페 운영 · 로고)을 적으세요. -->
+      <div class="reviews">
+        <blockquote class="review empty"><span class="q">“</span><p>후기를 정리하고 있어요.</p><cite>준비 중</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 무료 상담 신청 -->
+  <section id="contact">
+    <div class="wrap contact">
+      <div class="side">
+        <div class="sec-head" style="margin:0"><div><div class="num">06 — Contact</div></div></div>
+        <h2>필요한 디자인,<br>편하게 이야기해 주세요.</h2>
+        <p>이름과 연락처, 필요한 디자인만 남겨 주시면 확인 후 연락드릴게요. 상담은 무료예요.</p>
+      </div>
+
+      <form id="inquiry-form" novalidate>
+        <label class="field">이름
+          <input type="text" name="name" autocomplete="name" maxlength="50" required>
+        </label>
+        <label class="field">연락처 (전화번호 또는 카카오톡 ID)
+          <input type="tel" name="contact" autocomplete="tel" maxlength="100" required>
+        </label>
+        <fieldset>
+          <legend>필요한 디자인 (여러 개 골라도 돼요)</legend>
+          <div class="chips">
+            <label><input type="checkbox" name="design" value="로고·브랜딩"><span>로고 · 브랜딩</span></label>
+            <label><input type="checkbox" name="design" value="상세페이지·SNS"><span>상세페이지 · SNS</span></label>
+            <label><input type="checkbox" name="design" value="인쇄물·패키지"><span>인쇄물 · 패키지</span></label>
+            <label><input type="checkbox" name="design" value="아직 모르겠어요"><span>아직 모르겠어요</span></label>
+          </div>
+        </fieldset>
+        <div class="trap" aria-hidden="true">
+          <label>웹사이트 <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="consent" required>
+          <span>(필수) 상담 연락을 위해 이름·연락처·필요한 디자인을 받아요. 상담이 끝나면 1년 안에 지워요.</span>
+        </label>
+        <button class="btn" type="submit">무료 상담 신청</button>
+        <p class="msg" id="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© STUDIO · 로고 · 상세페이지 · 패키지 디자인</span>
+    <a href="#contact">무료 상담 신청</a>
+  </div>
+</footer>
+
+<a class="btn float-cta" href="#contact" id="float-cta">무료 상담 신청</a>
+
+<script>
+  // 포트폴리오 분야 나눠 보기
+  const filterBtns = document.querySelectorAll('.filters button');
+  const works = document.querySelectorAll('.work');
+  filterBtns.forEach((b) => b.addEventListener('click', () => {
+    filterBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    works.forEach((w) => { w.hidden = b.dataset.filter !== 'all' && w.dataset.cat !== b.dataset.filter; });
+  }));
+
+  // 폰 하단 버튼: 상담 신청 칸이 보이면 숨기기
+  const floatCta = document.getElementById('float-cta');
+  new IntersectionObserver(([e]) => { floatCta.style.visibility = e.isIntersecting ? 'hidden' : 'visible'; })
+    .observe(document.getElementById('contact'));
+
+  // 상담 신청 보내기
+  const form = document.getElementById('inquiry-form');
+  const msg = document.getElementById('form-msg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    const name = form.elements.name.value.trim();
+    const contact = form.elements.contact.value.trim();
+    const designs = [...form.querySelectorAll('input[name=design]:checked')].map((x) => x.value);
+    const consent = form.elements.consent.checked;
+    msg.className = 'msg err';
+    if (!name || !contact) { msg.textContent = '이름과 연락처를 적어 주세요'; return; }
+    if (!consent) { msg.textContent = '개인정보 수집·이용에 동의해 주세요'; return; }
+    btn.disabled = true; msg.className = 'msg'; msg.textContent = '보내는 중…';
+    try {
+      const r = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, contact, design_type: designs.join(', '), consent, website: form.elements.website.value }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error || '보내지 못했어요. 잠시 뒤 다시 시도해 주세요.');
+      form.reset();
+      msg.className = 'msg ok';
+      msg.textContent = '문의가 접수됐어요. 확인 후 연락드릴게요.';
+    } catch (err) {
+      msg.className = 'msg err';
+      msg.textContent = err.message || '보내지 못했어요. 잠시 뒤 다시 시도해 주세요.';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
